@@ -34,7 +34,7 @@ export default function NavBar() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 bg-gradient-to-b from-black via-black/50 to-transparent backdrop-blur-sm">
+    <div className="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-md">
       {/* Navbar */}
       <div className="relative max-w-[1600px] mx-auto w-full px-4 sm:px-8 py-3 sm:py-3 flex items-center justify-between">
         {/* Logo */}
@@ -61,8 +61,8 @@ export default function NavBar() {
                     href={item.href}
                     className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
                       pathname === item.href
-                        ? "text-[var(--ds-secondary-pure)]"
-                        : "text-white/80 hover:text-white"
+                        ? "text-[var(--ds-highlight-1)]"
+                        : "text-[var(--ds-neutral-2)] hover:text-[var(--ds-highlight)] dark:text-[var(--ds-neutral-1)] dark:hover:text-[var(--ds-highlight)]"
                     }`}
                   >
                     {item.label}
@@ -78,7 +78,7 @@ export default function NavBar() {
           <button
             aria-label="Toggle Menu"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="text-white hover:text-[var(--ds-secondary-pure)] transition"
+            className="text-neutral-900 dark:text-white hover:text-[var(--ds-secondary-pure)] transition"
           >
             <AnimatePresence mode="wait" initial={false}>
               {menuOpen ? (
@@ -127,7 +127,7 @@ export default function NavBar() {
               },
               exit: { opacity: 0, y: -30, transition: { duration: 0.4 } },
             }}
-            className="fixed top-0 left-0 h-screen w-screen sm:hidden bg-gradient-to-b from-black/90 via-black/70 to-black/50 backdrop-blur-md z-[60] flex flex-col px-8 py-20"
+            className="fixed top-0 left-0 h-screen w-screen sm:hidden bg-gradient-to-b from-white/95 via-white/90 to-white/80 dark:from-black/90 dark:via-black/70 dark:to-black/50 backdrop-blur-md z-[60] flex flex-col px-8 py-20"
           >
             <div className="flex flex-col gap-8">
               {links.map((item) => (
@@ -155,8 +155,8 @@ export default function NavBar() {
                     onClick={() => setMenuOpen(false)}
                     className={`text-3xl font-medium tracking-wide transition-colors ${
                       pathname === item.href
-                        ? "text-[var(--ds-secondary-pure)]"
-                        : "text-white hover:text-[var(--ds-secondary-pure)]"
+                        ? "text-[var(--ds-highlight-1)]"
+                        : "text-[var(--ds-neutral-2)] hover:text-[var(--ds-highlight)] dark:text-[var(--ds-neutral-1)] dark:hover:text-[var(--ds-highlight)]"
                     }`}
                   >
                     {item.label}
