@@ -13,13 +13,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useLanguage } from "@/hooks/useLanguage";
 import { ScrollToTopInstantly } from "@/components/utils/scroll-to-top";
+import LanguageModal from "@/components/common/language-modal";
+import { useTranslation } from "@/hooks/useTranslation";
 
 type LanguageCode = "en" | "pt" | "es";
 
 const languages: { code: LanguageCode; label: string }[] = [
-  { code: "en", label: "EN" },
-  { code: "pt", label: "PT" },
-  { code: "es", label: "ES" },
+  { code: "en", label: "English" },
+  { code: "pt", label: "Português (Brasil)" },
+  { code: "es", label: "Español" },
 ];
 
 export default function NavBar() {
@@ -27,6 +29,7 @@ export default function NavBar() {
   const [languageOpen, setLanguageOpen] = React.useState(false);
   const pathname = usePathname();
   const { language, setLanguage } = useLanguage();
+  const { t } = useTranslation();
 
   const links = [
     { label: "About us", href: "/about" },
@@ -84,33 +87,12 @@ export default function NavBar() {
           <div className="relative inline-flex w-fit">
             <button
               type="button"
-              onClick={() => setLanguageOpen((prev) => !prev)}
+              onClick={() => setLanguageOpen(true)}
               className="flex h-8 w-16 items-center justify-between rounded-full px-2 text-xs font-semibold uppercase text-white/70 hover:text-white"
             >
               <span>{language.toUpperCase()}</span>
               <ChevronDown className="h-4 w-4" />
             </button>
-            {languageOpen && (
-              <div className="absolute right-0 top-full mt-2 w-full rounded-xl border border-white/10 bg-neutral-950/95 p-2 text-xs text-white shadow-lg backdrop-blur">
-                {languages.map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => {
-                      setLanguage(lang.code);
-                      ScrollToTopInstantly();
-                      window.location.reload();
-                      setLanguageOpen(false);
-                    }}
-                    className={`flex w-full items-center justify-between rounded-lg px-2.5 py-2 text-xs font-medium transition hover:bg-white/10 ${
-                      lang.code === language ? "text-[#FAFAFA]" : "text-white/70"
-                    }`}
-                  >
-                    <span className="uppercase">{lang.label}</span>
-                    {lang.code === language && <span>✓</span>}
-                  </button>
-                ))}
-              </div>
-            )}
           </div>
         </div>
 
@@ -204,44 +186,44 @@ export default function NavBar() {
                   </Link>
                 </motion.div>
               ))}
-          <div className="w-fit">
-            <button
-              type="button"
-              onClick={() => setLanguageOpen((prev) => !prev)}
-              className="flex h-8 w-16 items-center justify-between rounded-full px-2 text-xs font-semibold uppercase text-white/70"
-            >
-              <span>{language.toUpperCase()}</span>
-              <ChevronDown className="h-4 w-4" />
-            </button>
-            {languageOpen && (
-              <div className="mt-3 w-full rounded-xl border border-white/10 bg-neutral-950/95 p-2 text-xs text-white shadow-lg backdrop-blur">
-                {languages.map((lang) => (
-                  <button
-                    key={lang.code}
-                        onClick={() => {
-                          setLanguage(lang.code);
-                          ScrollToTopInstantly();
-                          window.location.reload();
-                          setLanguageOpen(false);
-                          setMenuOpen(false);
-                        }}
-                        className={`flex w-full items-center justify-between rounded-lg px-2.5 py-2 text-xs font-medium transition hover:bg-white/10 ${
-                          lang.code === language
-                            ? "text-[#FAFAFA]"
-                            : "text-white/70"
-                        }`}
-                      >
-                        <span className="uppercase">{lang.label}</span>
-                        {lang.code === language && <span>✓</span>}
-                      </button>
-                    ))}
-                  </div>
-                )}
+              <div className="w-fit">
+                <button
+                  type="button"
+                  onClick={() => setLanguageOpen(true)}
+                  className="flex h-8 w-16 items-center justify-between rounded-full px-2 text-xs font-semibold uppercase text-white/70"
+                >
+                  <span>{language.toUpperCase()}</span>
+                  <ChevronDown className="h-4 w-4" />
+                </button>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+      <LanguageModal
+        isOpen={languageOpen}
+        onClose={() => setLanguageOpen(false)}
+        title={t.footer?.language}
+        description={t.footer?.languageDescription}
+      >
+        {languages.map((lang) => (
+          <button
+            key={lang.code}
+            onClick={() => {
+              setLanguage(lang.code);
+              ScrollToTopInstantly();
+              window.location.reload();
+              setLanguageOpen(false);
+              setMenuOpen(false);
+            }}
+            className={`flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white transition hover:bg-white/10 ${
+              lang.code === language ? "border-[#F39200] bg-[#F39200]/15" : ""
+            }`}
+          >
+            <span>{lang.label}</span>
+          </button>
+        ))}
+      </LanguageModal>
     </div>
   );
 }
