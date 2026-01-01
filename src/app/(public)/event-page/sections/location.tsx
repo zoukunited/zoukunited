@@ -1,6 +1,6 @@
 export default function LocationSection() {
   return (
-    <section className="relative overflow-hidden bg-neutral-950 px-6 py-16 lg:min-h-[534px]">
+    <section className="relative overflow-hidden bg-neutral-950 px-6 py-14 lg:min-h-[500px]">
       <div className="absolute inset-0">
         <img
           src="/bg.png"
@@ -10,7 +10,7 @@ export default function LocationSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/40" />
       </div>
-      <div className="relative mx-auto flex min-h-[380px] w-full max-w-6xl flex-col justify-between py-10 text-white sm:min-h-[440px] lg:min-h-[520px]">
+      <div className="relative mx-auto flex min-h-[360px] w-full max-w-6xl flex-col justify-between py-9 text-white sm:min-h-[420px] lg:min-h-[500px]">
         <div className="max-w-sm space-y-4">
           <p className="relative w-fit text-[20px] font-semibold uppercase leading-7 tracking-[-0.005em] text-[#FAFAFA] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-10 after:bg-[#F39200]">
             Location

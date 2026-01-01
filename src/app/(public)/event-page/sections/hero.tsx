@@ -8,6 +8,7 @@ export default function HeroSection() {
         { src: "/banner.png", alt: "Zouk United festival crowd" },
         { src: "/bg.png", alt: "Zouk United festival highlight" },
       ]}
+      heightClassName="min-h-[500px] lg:min-h-[500px]"
     >
       <div
         aria-hidden="true"

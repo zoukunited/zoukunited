@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function DetailsSection() {
   return (
-    <section className="bg-neutral-950/95 px-6 py-16 lg:min-h-[534px]">
+    <section className="bg-neutral-950/95 px-6 py-14 lg:min-h-[500px]">
       <div className="mx-auto max-w-6xl space-y-6">
         <p className="relative w-fit text-[20px] font-semibold uppercase leading-7 tracking-[-0.005em] text-[#FAFAFA] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-10 after:bg-[#F39200]">
           More details
