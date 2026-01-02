@@ -16,7 +16,10 @@ export default function LocationSection() {
             Location
           </p>
           <h3 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
-            Holiday Inn Miami Beach-Oceanfront
+            <span className="block">Holiday Inn</span>
+            <span className="block whitespace-nowrap">
+              Miami Beach-Oceanfront
+            </span>
           </h3>
         </div>
         <div className="space-y-4 text-[20px] text-white/80">
