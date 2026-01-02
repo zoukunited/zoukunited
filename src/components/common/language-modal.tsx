@@ -25,7 +25,7 @@ export default function LanguageModal({
   children,
 }: LanguageModalProps) {
   const items = Children.map(children, (child) => {
-    if (!isValidElement(child)) return child;
+    if (!isValidElement<{ className?: string }>(child)) return child;
     const existing = child.props.className ?? "";
     return cloneElement(child, {
       className: `${existing} w-full min-h-[52px] rounded-xl`,

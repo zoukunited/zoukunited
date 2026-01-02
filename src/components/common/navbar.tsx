@@ -35,7 +35,7 @@ export default function NavBar() {
     { label: "About us", href: "/about" },
     { label: "Festivals", href: "/event-page" },
     { label: "Classes", href: "/classes" },
-    { label: "Sign up/Log in", href: "/login" },
+    { label: "Log in", href: "/login" },
   ];
 
   React.useEffect(() => {
